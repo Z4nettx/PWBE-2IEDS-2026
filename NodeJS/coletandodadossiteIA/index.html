@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema IA — Coleta e Análise</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ===================== HEADER ===================== -->
+    <header>
+        <div class="header-inner">
+            <div class="logo">🤖 Sistema IA</div>
+            <p class="subtitulo">Coleta, Análise e Visualização de Dados sobre Inteligência Artificial</p>
+        </div>
+    </header>
+
+    <!-- ===================== NAVEGAÇÃO ===================== -->
+    <nav>
+        <button class="nav-btn active" onclick="mostrarSecao('dashboard', event)">📊 Dashboard</button>
+        <button class="nav-btn" onclick="mostrarSecao('cadastro', event)">➕ Cadastrar Site</button>
+        <button class="nav-btn" onclick="mostrarSecao('coletar', event)">🔍 Coletar Dados</button>
+        <button class="nav-btn" onclick="mostrarSecao('coletas', event)">📋 Ver Coletas</button>
+        <button class="nav-btn pdf-btn" onclick="baixarPDF()">📄 Relatório PDF</button>
+    </nav>
+
+    <main>
+
+        <!-- ===================== SEÇÃO DASHBOARD ===================== -->
+        <section id="dashboard" class="secao ativa">
+            <h2>📊 Dashboard — Indicadores por Categoria</h2>
+            <div id="cards-stats" class="cards-container">
+                <p class="loading">Carregando estatísticas...</p>
+            </div>
+
+            <h2 style="margin-top:2rem;">📈 Volume de Coletas por Tema</h2>
+            <div class="chart-wrapper">
+                <canvas id="graficoBarras"></canvas>
+            </div>
+        </section>
+
+        <!-- ===================== SEÇÃO CADASTRO ===================== -->
+        <section id="cadastro" class="secao">
+            <h2>➕ Cadastrar Fonte de Pesquisa</h2>
+            <div class="form-card">
+                <div class="campo">
+                    <label for="nome_site">Nome do Site</label>
+                    <input type="text" id="nome_site" placeholder="Ex: MIT Technology Review" />
+                </div>
+                <div class="campo">
+                    <label for="url_site">URL</label>
+                    <input type="text" id="url_site" placeholder="https://www.exemplo.com" />
+                    <span id="url-validacao" class="validacao-msg"></span>
+                </div>
+                <div class="campo">
+                    <label for="id_tema">Categoria de IA</label>
+                    <select id="id_tema">
+                        <option value="">Carregando temas...</option>
+                    </select>
+                </div>
+                <button class="btn-primario" onclick="cadastrarSite()">💾 Cadastrar Site</button>
+                <div id="msg-cadastro" class="msg"></div>
+            </div>
+        </section>
+
+        <!-- ===================== SEÇÃO COLETAR ===================== -->
+        <section id="coletar" class="secao">
+            <h2>🔍 Iniciar Coleta de Dados</h2>
+            <div class="form-card">
+                <div class="campo">
+                    <label for="site-coletar">Selecione o site cadastrado</label>
+                    <select id="site-coletar">
+                        <option value="">Carregando sites...</option>
+                    </select>
+                </div>
+                <button class="btn-primario" onclick="iniciarColeta()">🚀 Coletar Agora</button>
+                <div id="msg-coleta" class="msg"></div>
+                <div id="resultado-coleta" class="resultado-box" style="display:none;"></div>
+            </div>
+        </section>
+
+        <!-- ===================== SEÇÃO VER COLETAS ===================== -->
+        <section id="coletas" class="secao">
+            <h2>📋 Histórico de Coletas</h2>
+            <div class="tabela-wrapper">
+                <table id="tabela-coletas">
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Site</th>
+                            <th>Título</th>
+                            <th>Links</th>
+                            <th>Imagens</th>
+                            <th>Keywords IA</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-coletas">
+                        <tr>
+                            <td colspan="7" class="loading">Carregando...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Sistema de Análise de IA &copy; 2025 — Projeto Escolar</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "coletandodadossiteia",
+  "version": "1.0.0",
+  "description": "Sistema de Coleta e Análise de Dados sobre Inteligência Artificial",
+  "dependencies": {
+    "axios": "^1.16.1",
+    "better-sqlite3": "^12.10.0",
+    "cheerio": "^1.2.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "pdfkit": "^0.18.0"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
